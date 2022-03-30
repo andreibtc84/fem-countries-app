@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styled from "styled-components";
 
 export const SingleCountry = () => {
   let params = useParams();
@@ -22,31 +23,79 @@ export const SingleCountry = () => {
     fetchDetails();
   }, [params.name]);
   return (
-    <div>
-      <div>
-        <img
-          src={countryDetails.flag}
-          alt={countryDetails.name + "Flag"}
-          width="400"
-        />
-      </div>
-      <div>
+    <CountryWrapper>
+      <FlagWrapper>
+        <img src={countryDetails.flag} alt={countryDetails.name + "Flag"} />
+      </FlagWrapper>
+
+      <DetailsBox>
         <h1>{countryDetails.name}</h1>
-        <p>Native name: {countryDetails.nativeName}</p>
-        <p>Population: {countryDetails.population}</p>
-        <p>Region: {countryDetails.region}</p>
-        <p>Sub Region: {countryDetails.subregion}</p>
-        <p>Capital: {countryDetails.capital}</p>
-      </div>
-      <div>
-        <p>Top Level Domain: {countryDetails.topLevelDomain}</p>
-        <p>
-          Currencies: {currencies && currencies.map((cur) => `${cur.name}, `)}
-        </p>
-        <p>
-          Languages: {languages && languages.map((lang) => `${lang.name}, `)}
-        </p>
-      </div>
-    </div>
+        <DetailWrapper>
+          <div>
+            <p>
+              <strong>Native name:</strong> {countryDetails.nativeName}
+            </p>
+            <p>
+              <strong>Population:</strong> {countryDetails.population}
+            </p>
+            <p>
+              <strong>Region:</strong> {countryDetails.region}
+            </p>
+            <p>
+              <strong>Sub Region:</strong> {countryDetails.subregion}
+            </p>
+            <p>
+              <strong>Capital:</strong> {countryDetails.capital}
+            </p>
+          </div>
+          <div>
+            <p>
+              <strong>Top Level Domain:</strong> {countryDetails.topLevelDomain}
+            </p>
+            <p>
+              <strong>Currencies:</strong>{" "}
+              {currencies && currencies.map((currency) => `${currency.name}, `)}
+            </p>
+            <p>
+              <strong>Languages:</strong>{" "}
+              {languages && languages.map((lang) => `${lang.name}, `)}
+            </p>
+          </div>
+        </DetailWrapper>
+        <div>
+          <p>
+            <strong>Border Countries:</strong>
+          </p>
+        </div>
+      </DetailsBox>
+    </CountryWrapper>
   );
 };
+
+const CountryWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+`;
+
+const FlagWrapper = styled.div`
+  margin: 0 auto;
+  img {
+    max-width: 500px;
+  }
+`;
+
+const DetailsBox = styled.div`
+  display: grid;
+  grid-template-rows: 0.5fr 2fr 1fr;
+  gap: 2rem;
+`;
+
+const DetailWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+`;
