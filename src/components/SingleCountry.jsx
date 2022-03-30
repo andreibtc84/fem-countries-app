@@ -74,7 +74,7 @@ export const SingleCountry = () => {
 
 const CountryWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 2rem;
   padding: 2rem;
   max-width: 100%;
@@ -83,8 +83,10 @@ const CountryWrapper = styled.div`
 
 const FlagWrapper = styled.div`
   margin: 0 auto;
+  overflow: hidden;
   img {
-    max-width: 500px;
+    width: 100%;
+    padding: 0 auto;
   }
 `;
 
