@@ -40,8 +40,12 @@ export const SingleCountry = () => {
       </div>
       <div>
         <p>Top Level Domain: {countryDetails.topLevelDomain}</p>
-        <p>Currencies: {currencies.map((cur) => `${cur.name}, `)}</p>
-        <p>Languages: {languages.map((lang) => `${lang.name}, `)}</p>
+        <p>
+          Currencies: {currencies && currencies.map((cur) => `${cur.name}, `)}
+        </p>
+        <p>
+          Languages: {languages && languages.map((lang) => `${lang.name}, `)}
+        </p>
       </div>
     </div>
   );
