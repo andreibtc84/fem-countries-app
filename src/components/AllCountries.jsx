@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -19,35 +20,42 @@ export const AllCountries = () => {
 
       localStorage.setItem("countries", JSON.stringify(data));
       setCountries(data);
-      console.log(data);
+      // console.log(data);
     }
   };
 
   return (
     <ListWrapper>
+      {/* {console.log(countries)} */}
       {countries.map((country, i) => {
         return (
-          <CountryCard
-            key={i}
-            onClick={() => console.log(country.name.common, "clicked")}
-          >
-            <img src={country.flags.svg} alt={country.name.common + " flag"} />
-            <div>
-              <h2>{country.name.common}</h2>
-              <div>
-                <h5>Population:</h5>
-                <p>{country.population}</p>
-              </div>
-              <div>
-                <h5>Region:</h5>
-                <p>{country.region}</p>
-              </div>
-              <div>
-                <h5>Capital City:</h5>
-                <p>{country.capital}</p>
-              </div>
-            </div>
-          </CountryCard>
+          <nav key={i}>
+            <Link to={"/SingleCountry/" + country.name.common}>
+              <CountryCard
+                onClick={() => console.log(country.name.common, "clicked")}
+              >
+                <img
+                  src={country.flags.svg}
+                  alt={country.name.common + " flag"}
+                />
+                <div>
+                  <h2>{country.name.common}</h2>
+                  <div>
+                    <h5>Population:</h5>
+                    <p>{country.population}</p>
+                  </div>
+                  <div>
+                    <h5>Region:</h5>
+                    <p>{country.region}</p>
+                  </div>
+                  <div>
+                    <h5>Capital City:</h5>
+                    <p>{country.capital}</p>
+                  </div>
+                </div>
+              </CountryCard>
+            </Link>
+          </nav>
         );
       })}
     </ListWrapper>
