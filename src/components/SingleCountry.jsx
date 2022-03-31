@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -7,6 +8,7 @@ export const SingleCountry = () => {
   const [countryDetails, setCountryDetails] = useState({});
   const [currencies, setCurrencies] = useState([]);
   const [languages, setLanguages] = useState([]);
+  const [borders, setBorders] = useState([]);
 
   const fetchDetails = async () => {
     const response = await fetch(
@@ -17,15 +19,16 @@ export const SingleCountry = () => {
     setCountryDetails(details[0]);
     setCurrencies(details[0].currencies);
     setLanguages(details[0].languages);
+    setBorders(details[0].borders);
   };
 
   useEffect(() => {
     fetchDetails();
-  }, [params.name]);
+  }, [params]);
   return (
     <CountryWrapper>
       <FlagWrapper>
-        <img src={countryDetails.flag} alt={countryDetails.name + "Flag"} />
+        <img src={countryDetails.flag} alt={countryDetails.name + " Flag"} />
       </FlagWrapper>
 
       <DetailsBox>
@@ -53,19 +56,20 @@ export const SingleCountry = () => {
               <strong>Top Level Domain:</strong> {countryDetails.topLevelDomain}
             </p>
             <p>
-              <strong>Currencies:</strong>{" "}
+              <strong>Currencies:</strong>
               {currencies && currencies.map((currency) => `${currency.name}, `)}
             </p>
             <p>
-              <strong>Languages:</strong>{" "}
+              <strong>Languages:</strong>
               {languages && languages.map((lang) => `${lang.name}, `)}
             </p>
           </div>
         </DetailWrapper>
         <div>
-          <p>
-            <strong>Border Countries:</strong>
-          </p>
+          <strong>Border Countries:</strong>
+          {borders.map((element, i) => {
+            return <button key={i}>{element}</button>;
+          })}
         </div>
       </DetailsBox>
     </CountryWrapper>

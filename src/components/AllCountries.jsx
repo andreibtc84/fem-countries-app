@@ -20,7 +20,6 @@ export const AllCountries = () => {
 
       localStorage.setItem("countries", JSON.stringify(data));
       setCountries(data);
-      // console.log(data);
     }
   };
 
