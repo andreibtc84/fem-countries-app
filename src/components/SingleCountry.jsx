@@ -167,4 +167,30 @@ const ButtonWrapper = styled.div`
   justify-content: space-around;
   gap: 0.5rem;
   margin: 0.5rem;
+
+  button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-around;
+    background-color: white;
+    padding: 0.2rem 1rem;
+    border-radius: 0.3rem;
+    font-size: 0.7rem;
+
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+      background-color: black;
+      color: white;
+    }
+    &:active {
+      box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px,
+        rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    }
+  }
 `;

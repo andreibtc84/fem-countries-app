@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
+import { FilterRegion } from "./FilterRegion";
 
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -24,38 +25,41 @@ export const AllCountries = () => {
   };
 
   return (
-    <ListWrapper>
-      {/* {console.log(countries)} */}
-      {countries.map((country, i) => {
-        return (
-          <nav key={i}>
-            <CardLink to={"/SingleCountry/" + country.name.common}>
-              <CountryCard>
-                <img
-                  src={country.flags.svg}
-                  alt={country.name.common + " flag"}
-                />
-                <div>
-                  <h2>{country.name.common}</h2>
+    <>
+      <FilterRegion />
+      <ListWrapper>
+        {/* {console.log(countries)} */}
+        {countries.map((country, i) => {
+          return (
+            <nav key={i}>
+              <CardLink to={"/SingleCountry/" + country.name.common}>
+                <CountryCard>
+                  <img
+                    src={country.flags.svg}
+                    alt={country.name.common + " flag"}
+                  />
                   <div>
-                    <h5>Population:</h5>
-                    <p>{country.population}</p>
+                    <h2>{country.name.common}</h2>
+                    <div>
+                      <h5>Population:</h5>
+                      <p>{country.population}</p>
+                    </div>
+                    <div>
+                      <h5>Region:</h5>
+                      <p>{country.region}</p>
+                    </div>
+                    <div>
+                      <h5>Capital City:</h5>
+                      <p>{country.capital}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h5>Region:</h5>
-                    <p>{country.region}</p>
-                  </div>
-                  <div>
-                    <h5>Capital City:</h5>
-                    <p>{country.capital}</p>
-                  </div>
-                </div>
-              </CountryCard>
-            </CardLink>
-          </nav>
-        );
-      })}
-    </ListWrapper>
+                </CountryCard>
+              </CardLink>
+            </nav>
+          );
+        })}
+      </ListWrapper>
+    </>
   );
 };
 
