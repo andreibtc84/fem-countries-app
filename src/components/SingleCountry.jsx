@@ -116,16 +116,18 @@ const StyledButton = styled.button`
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
-  MdArrowBackIosNew {
-    width: 4rem;
-  }
-
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
       rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: black;
+    color: white;
   }
   &:active {
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+
+  MdArrowBackIosNew {
+    width: 4rem;
   }
 `;
 const CountryWrapper = styled.div`
