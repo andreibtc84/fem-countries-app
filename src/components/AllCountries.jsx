@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -29,10 +29,8 @@ export const AllCountries = () => {
       {countries.map((country, i) => {
         return (
           <nav key={i}>
-            <Link to={"/SingleCountry/" + country.name.common}>
-              <CountryCard
-                onClick={() => console.log(country.name.common, "clicked")}
-              >
+            <CardLink to={"/SingleCountry/" + country.name.common}>
+              <CountryCard>
                 <img
                   src={country.flags.svg}
                   alt={country.name.common + " flag"}
@@ -53,7 +51,7 @@ export const AllCountries = () => {
                   </div>
                 </div>
               </CountryCard>
-            </Link>
+            </CardLink>
           </nav>
         );
       })}
@@ -70,14 +68,30 @@ const ListWrapper = styled.div`
   gap: 2rem;
   margin: 0 auto;
 `;
+const CardLink = styled(Link)`
+  color: #ffffff;
+  text-decoration: none;
+`;
 const CountryCard = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  border: 2px solid black;
+  gap: 1rem;
+  // border: 2px solid black;
   border-radius: 0.5rem;
   width: 300px;
   height: 400px;
   overflow: hidden;
+  align-items: flex-start;
+  justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+      rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  }
+  &:active {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
 
   img {
     width: 100%;
@@ -88,7 +102,7 @@ const CountryCard = styled.div`
     flex-flow: column wrap;
     align-items: flex-start;
     justify-content: space-evenly;
-    padding: 10px;
+    padding-left: 10px;
 
     div {
       display: inline;
