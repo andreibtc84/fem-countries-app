@@ -67,9 +67,12 @@ export const SingleCountry = () => {
         </DetailWrapper>
         <div>
           <strong>Border Countries:</strong>
-          {borders.map((element, i) => {
-            return <button key={i}>{element}</button>;
-          })}
+          <ButtonWrapper>
+            {borders &&
+              borders.map((element, i) => {
+                return <button key={i}>{element}</button>;
+              })}
+          </ButtonWrapper>
         </div>
       </DetailsBox>
     </CountryWrapper>
@@ -104,4 +107,13 @@ const DetailWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+`;
+
+const ButtonWrapper = styled.div`
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5rem;
+  margin: 0.5rem;
 `;
