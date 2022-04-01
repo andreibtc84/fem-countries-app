@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FilterRegion } from "./FilterRegion";
 
 export const AllCountries = () => {
@@ -16,30 +16,26 @@ export const AllCountries = () => {
     if (check) {
       setCountries(JSON.parse(check)); // if it is, sets state to that data
     } else {
-      const response = await fetch("https://restcountries.com/v3.1/all"); // if not, it will fetch the data from the API
+      const response = await fetch("https://restcountries.com/v2/all"); // if not, it will fetch the data from the API
       const data = await response.json();
 
       localStorage.setItem("countries", JSON.stringify(data));
       setCountries(data);
     }
   };
-
+  console.log(countries[0]);
   return (
     <>
       <FilterRegion />
       <ListWrapper>
-        {/* {console.log(countries)} */}
         {countries.map((country, i) => {
           return (
             <nav key={i}>
-              <CardLink to={"/SingleCountry/" + country.name.common}>
+              <CardLink to={"/SingleCountry/" + country.name}>
                 <CountryCard>
-                  <img
-                    src={country.flags.svg}
-                    alt={country.name.common + " flag"}
-                  />
+                  <img src={country.flags.svg} alt={country.name + " flag"} />
                   <div>
-                    <h2>{country.name.common}</h2>
+                    <h2>{country.name}</h2>
                     <div>
                       <h5>Population:</h5>
                       <p>{country.population}</p>
@@ -80,7 +76,6 @@ const CountryCard = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
-  // border: 2px solid black;
   border-radius: 0.5rem;
   width: 300px;
   height: 400px;
@@ -108,6 +103,10 @@ const CountryCard = styled.div`
     justify-content: space-evenly;
     padding-left: 10px;
 
+    h2 {
+      color: black;
+      margin: 1rem;
+    }
     div {
       display: inline;
       color: gray;

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { AllCountries } from "./AllCountries";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { BorderCountry } from "./BorderCountry";
 
 export const SingleCountry = () => {
   let params = useParams();
@@ -22,6 +23,7 @@ export const SingleCountry = () => {
     setCurrencies(details[0].currencies);
     setLanguages(details[0].languages);
     setBorders(details[0].borders);
+    console.log(details[0].borders);
   };
 
   useEffect(() => {
@@ -89,10 +91,7 @@ export const SingleCountry = () => {
           <div>
             <strong>Border Countries:</strong>
             <ButtonWrapper>
-              {borders &&
-                borders.map((element, i) => {
-                  return <button key={i}>{element}</button>;
-                })}
+              <BorderCountry borders={borders} />
             </ButtonWrapper>
           </div>
         </DetailsBox>
@@ -111,6 +110,7 @@ const StyledButton = styled.button`
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   text-transform: uppercase;
+  border: 1px solid white;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
@@ -162,9 +162,9 @@ const DetailWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
   display: inline-flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   gap: 0.5rem;
   margin: 0.5rem;
 
@@ -178,7 +178,7 @@ const ButtonWrapper = styled.div`
     padding: 0.2rem 1rem;
     border-radius: 0.3rem;
     font-size: 0.7rem;
-
+    border: 1px solid white;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 
