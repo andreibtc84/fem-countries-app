@@ -20,15 +20,21 @@ export const BorderCountry = (borders) => {
   }, [borders]);
 
   const getBorderList = async () => {
-    try {
-      const response = await fetch(
-        `https://restcountries.com/v2/alpha?codes=${borderCountries.borders.toString()}`
-      );
-      let borderCountriesList = await response.json();
-      const countriesList = borderCountriesList.map((el) => el.name);
-      setCountryNames(countriesList);
-    } catch (error) {
-      return error;
+    const checkNeigbours = localStorage.getItem("neigbourCountries");
+
+    if (checkNeigbours) {
+      setCountryNames(JSON.parse(checkNeigbours));
+    } else {
+      try {
+        const response = await fetch(
+          `https://restcountries.com/v2/alpha?codes=${borderCountries.borders.toString()}`
+        );
+        let borderCountriesList = await response.json();
+        const countriesList = borderCountriesList.map((el) => el.name);
+        setCountryNames(countriesList);
+      } catch (error) {
+        return error;
+      }
     }
   };
 

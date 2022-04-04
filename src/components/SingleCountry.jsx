@@ -171,7 +171,7 @@ const ButtonWrapper = styled.div`
   display: inline-flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: start;
   gap: 0.5rem;
   margin: 0.5rem;
 
