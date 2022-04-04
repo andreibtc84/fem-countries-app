@@ -19,11 +19,10 @@ export const SingleCountry = () => {
     );
     const details = await response.json();
 
+    setBorders(details[0].borders);
     setCountryDetails(details[0]);
     setCurrencies(details[0].currencies);
     setLanguages(details[0].languages);
-    setBorders(details[0].borders);
-    console.log(details[0].borders);
   };
 
   useEffect(() => {
@@ -36,10 +35,10 @@ export const SingleCountry = () => {
         element={<AllCountries />}
         style={{
           textDecoration: "none",
-          display: "flex",
-          alignItems: "start",
-          marginLeft: "4rem",
-          width: "100%",
+          alignSelf: "start",
+
+          maxWidth: "100%",
+          overflow: "hidden",
         }}
       >
         <StyledButton>
@@ -107,6 +106,7 @@ const StyledButton = styled.button`
   gap: 0.5rem;
   justify-content: space-around;
   background-color: white;
+  margin: 3rem;
   padding: 0.75rem 1.5rem;
   border-radius: 0.5rem;
   text-transform: uppercase;
@@ -135,13 +135,20 @@ const CountryWrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 2rem;
   padding: 2rem;
-  max-width: 100%;
+  width: 100%;
   overflow: hidden;
 `;
 
 const FlagWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
   margin: 0 auto;
   overflow: hidden;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   img {
     width: 100%;
     padding: 0 auto;
@@ -150,7 +157,7 @@ const FlagWrapper = styled.div`
 
 const DetailsBox = styled.div`
   display: grid;
-  grid-template-rows: 0.5fr 2fr 1fr;
+  grid-template-rows: 0.5fr 1fr 1fr;
   gap: 2rem;
 `;
 

@@ -1,13 +1,13 @@
 import "./App.css";
 import { Pages } from "./pages/Pages";
 import { BrowserRouter } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Countries App</h1>
-
+        <Navbar />
         <Pages />
       </div>
     </BrowserRouter>

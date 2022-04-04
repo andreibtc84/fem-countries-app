@@ -23,7 +23,7 @@ export const AllCountries = () => {
       setCountries(data);
     }
   };
-  console.log(countries[0]);
+
   return (
     <>
       <FilterRegion />
