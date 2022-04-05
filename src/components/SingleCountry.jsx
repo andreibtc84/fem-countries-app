@@ -14,15 +14,23 @@ export const SingleCountry = () => {
   const [borders, setBorders] = useState([]);
 
   const fetchDetails = async () => {
-    const response = await fetch(
-      `https://restcountries.com/v2/name/${params.name}`
-    );
-    const details = await response.json();
+    const countryNamesParams = localStorage.getItem("countryDetails");
 
-    setBorders(details[0].borders);
-    setCountryDetails(details[0]);
-    setCurrencies(details[0].currencies);
-    setLanguages(details[0].languages);
+    if (countryNamesParams) {
+      setCountryDetails(JSON.parse("countryNamesParams"));
+    } else {
+      const response = await fetch(
+        `https://restcountries.com/v2/name/${params.name}`
+      );
+      const details = await response.json();
+
+      localStorage.setItem("countryNamesParams", JSON.stringify(details));
+
+      setBorders(details[0].borders);
+      setCountryDetails(details[0]);
+      setCurrencies(details[0].currencies);
+      setLanguages(details[0].languages);
+    }
   };
 
   useEffect(() => {
