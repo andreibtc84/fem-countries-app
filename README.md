@@ -1,4 +1,4 @@
-# Site Hosted on Netlify on: react-countries-rest-api.netlify.app
+Site Hosted on Netlify on: react-countries-rest-api.netlify.app
 
 # Frontend Mentor - REST Countries API with color theme switcher
 
