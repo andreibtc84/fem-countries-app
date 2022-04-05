@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export const BorderCountry = (borders) => {
-  let params = useParams();
   const [countryNames, setCountryNames] = useState();
   const [borderCountries, setBorderCountries] = useState({});
 
