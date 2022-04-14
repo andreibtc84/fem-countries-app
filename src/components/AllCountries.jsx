@@ -73,7 +73,7 @@ const ListWrapper = styled.div`
   justify-content: center;
   width: 100%;
   margin: 2rem;
-  gap: 2rem;
+
   margin: 0 auto;
 `;
 const CardLink = styled(Link)`
