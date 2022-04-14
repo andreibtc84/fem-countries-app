@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+
 import styled from "styled-components";
 import { AllCountries } from "./AllCountries";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -36,7 +36,6 @@ export const SingleCountry = () => {
         style={{
           textDecoration: "none",
           alignSelf: "start",
-
           maxWidth: "100%",
           overflow: "hidden",
         }}
@@ -48,7 +47,10 @@ export const SingleCountry = () => {
       </Link>
       <CountryWrapper>
         <FlagWrapper>
-          <img src={countryDetails.flag} alt={countryDetails.name + " Flag"} />
+          <img
+            src={countryDetails.flag}
+            alt={countryDetails.name && "Country Flag"}
+          />
         </FlagWrapper>
 
         <DetailsBox>
