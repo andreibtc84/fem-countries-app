@@ -135,7 +135,7 @@ const StyledButton = styled.button`
 const CountryWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  gap: 2rem;
+  grid-gap: 2rem;
   padding: 2rem;
   width: 100%;
   overflow: hidden;
@@ -167,14 +167,14 @@ const DetailsBox = styled.div`
 const DetailWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-gap: 1rem;
 `;
 
 const ButtonWrapper = styled.div`
   display: inline-flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   gap: 0.5rem;
   margin: 0.5rem;
 

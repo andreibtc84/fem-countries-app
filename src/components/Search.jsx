@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-export const Search = () => {
-  return <SearchBox type="text" placeholder="Search" />;
+export const Search = ({ setSearchTerm }) => {
+  return (
+    <SearchBox
+      type="text"
+      placeholder="Search"
+      onChange={(e) => setSearchTerm(e.target.value)}
+    />
+  );
 };
 
 const SearchBox = styled.input`

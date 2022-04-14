@@ -5,6 +5,7 @@ import { UtilityBar } from "./UtilityBar";
 
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     getCountries();
@@ -26,34 +27,40 @@ export const AllCountries = () => {
 
   return (
     <>
-      <UtilityBar />
+      <UtilityBar setSearchTerm={setSearchTerm} />
       <ListWrapper>
-        {countries.map((country, i) => {
-          return (
-            <nav key={i}>
-              <CardLink to={"/SingleCountry/" + country.name}>
-                <CountryCard>
-                  <img src={country.flags.svg} alt={country.name + " flag"} />
-                  <div>
-                    <h2>{country.name}</h2>
+        {countries
+          .filter((country) =>
+            !searchTerm
+              ? country
+              : country.name.toLowerCase().includes(searchTerm)
+          )
+          .map((country, i) => {
+            return (
+              <nav key={i}>
+                <CardLink to={"/SingleCountry/" + country.name}>
+                  <CountryCard>
+                    <img src={country.flags.svg} alt={country.name + " flag"} />
                     <div>
-                      <h5>Population:</h5>
-                      <p>{country.population}</p>
+                      <h2>{country.name}</h2>
+                      <div>
+                        <h5>Population:</h5>
+                        <p>{country.population}</p>
+                      </div>
+                      <div>
+                        <h5>Region:</h5>
+                        <p>{country.region}</p>
+                      </div>
+                      <div>
+                        <h5>Capital City:</h5>
+                        <p>{country.capital}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h5>Region:</h5>
-                      <p>{country.region}</p>
-                    </div>
-                    <div>
-                      <h5>Capital City:</h5>
-                      <p>{country.capital}</p>
-                    </div>
-                  </div>
-                </CountryCard>
-              </CardLink>
-            </nav>
-          );
-        })}
+                  </CountryCard>
+                </CardLink>
+              </nav>
+            );
+          })}
       </ListWrapper>
     </>
   );
@@ -65,6 +72,7 @@ const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin: 2rem;
   gap: 2rem;
   margin: 0 auto;
 `;
@@ -75,7 +83,8 @@ const CardLink = styled(Link)`
 const CountryCard = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 1rem;
+  margin: 1rem;
+  grid-gap: 1rem;
   border-radius: 0.5rem;
   width: 300px;
   height: 400px;

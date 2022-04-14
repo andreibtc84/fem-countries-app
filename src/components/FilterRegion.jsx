@@ -4,6 +4,7 @@ import { AllCountries } from "./AllCountries";
 
 export const FilterRegion = () => {
   const allRegions = [
+    "Filter by region",
     "Africa",
     "Americas",
     "Antarctic",
