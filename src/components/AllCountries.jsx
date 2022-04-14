@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { FilterRegion } from "./FilterRegion";
+import { UtilityBar } from "./UtilityBar";
 
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
@@ -26,7 +26,7 @@ export const AllCountries = () => {
 
   return (
     <>
-      <FilterRegion />
+      <UtilityBar />
       <ListWrapper>
         {countries.map((country, i) => {
           return (

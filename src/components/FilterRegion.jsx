@@ -12,30 +12,18 @@ export const FilterRegion = () => {
     "Oceania",
   ];
   return (
-    <FilterBox>
-      <SelectBox name="Region" id="region">
-        {allRegions.map((region) => (
-          <option value={region} key={region} onChange={console.log("Changed")}>
-            <NavLink
-              to={`/region/${region}`}
-              element={<AllCountries region={region} />}
-            >
-              {region}
-            </NavLink>
-          </option>
-        ))}
-      </SelectBox>
-    </FilterBox>
+    <SelectBox name="Region" id="region">
+      {allRegions.map((region) => (
+        <option value={region} key={region} onChange={console.log("Changed")}>
+          {region}
+        </option>
+      ))}
+    </SelectBox>
   );
 };
 
-const FilterBox = styled.div`
-  margin: 2rem;
-  padding: 1rem;
-  width: 10rem;
-`;
 const SelectBox = styled.select`
-  margin: 1rem 4rem;
+  font-size: 1.5rem;
   padding: 1rem 2rem;
   width: fit-content;
   border: none;
