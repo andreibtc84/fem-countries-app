@@ -41,7 +41,7 @@ export const AllCountries = () => {
           .filter((country) =>
             !searchTerm
               ? country
-              : country.name.toLowerCase().includes(searchTerm)
+              : country.name.toLowerCase().includes(searchTerm.toLowerCase())
           )
           .map((country) => {
             return (
