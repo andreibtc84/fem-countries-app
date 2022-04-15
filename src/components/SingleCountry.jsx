@@ -75,16 +75,16 @@ export const SingleCountry = () => {
             </div>
             <div>
               <p>
-                <strong>Top Level Domain:</strong>{" "}
+                <strong>Top Level Domain: </strong>{" "}
                 {countryDetails.topLevelDomain}
               </p>
               <p>
-                <strong>Currencies:</strong>
+                <strong>Currencies: </strong>
                 {currencies &&
                   currencies.map((currency) => `${currency.name}, `)}
               </p>
               <p>
-                <strong>Languages:</strong>
+                <strong>Languages: </strong>
                 {languages && languages.map((lang) => `${lang.name}, `)}
               </p>
             </div>
