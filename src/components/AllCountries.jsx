@@ -6,6 +6,7 @@ import { UtilityBar } from "./UtilityBar";
 export const AllCountries = () => {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [activeRegion, setActiveRegion] = useState("");
 
   useEffect(() => {
     getCountries();
@@ -25,19 +26,26 @@ export const AllCountries = () => {
     }
   };
 
+  const filteredCountries = countries
+    .map((country) => country.region.includes(activeRegion) && country)
+    .filter((mappedCountry) => mappedCountry.name && mappedCountry);
+
   return (
     <>
-      <UtilityBar setSearchTerm={setSearchTerm} />
+      <UtilityBar
+        setSearchTerm={setSearchTerm}
+        setActiveRegion={setActiveRegion}
+      />
       <ListWrapper>
-        {countries
+        {filteredCountries
           .filter((country) =>
             !searchTerm
               ? country
               : country.name.toLowerCase().includes(searchTerm)
           )
-          .map((country, i) => {
+          .map((country) => {
             return (
-              <nav key={i}>
+              <nav key={country.name}>
                 <CardLink to={"/SingleCountry/" + country.name}>
                   <CountryCard>
                     <img src={country.flags.svg} alt={country.name + " flag"} />

@@ -3,11 +3,11 @@ import { FilterRegion } from "./FilterRegion";
 import { Search } from "./Search";
 import styled from "styled-components";
 
-export const UtilityBar = ({ setSearchTerm }) => {
+export const UtilityBar = ({ setSearchTerm, setActiveRegion }) => {
   return (
     <UtilityContainer>
       <Search setSearchTerm={setSearchTerm} />
-      <FilterRegion />
+      <FilterRegion setActiveRegion={setActiveRegion} />
     </UtilityContainer>
   );
 };
