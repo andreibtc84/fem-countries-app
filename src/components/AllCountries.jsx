@@ -50,7 +50,7 @@ export const AllCountries = () => {
                   <CountryCard>
                     <img src={country.flags.svg} alt={country.name + " flag"} />
                     <div>
-                      <h2>{country.name}</h2>
+                      <h2 id="list-country-title">{country.name}</h2>
                       <div>
                         <h5>Population:</h5>
                         <p>{country.population}</p>
@@ -81,7 +81,6 @@ const ListWrapper = styled.div`
   justify-content: center;
   width: 100%;
   margin: 2rem;
-
   margin: 0 auto;
 `;
 const CardLink = styled(Link)`
