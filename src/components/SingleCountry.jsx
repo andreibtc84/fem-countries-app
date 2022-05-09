@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-
 import styled from "styled-components";
 import { AllCountries } from "./AllCountries";
 import { MdArrowBackIosNew } from "react-icons/md";
